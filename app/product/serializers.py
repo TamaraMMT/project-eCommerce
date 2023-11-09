@@ -13,7 +13,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
-        fields = ["name"]
+        fields = "__all__"
         read_only_fields = ["id"]
 
 
