@@ -18,6 +18,9 @@ class BrandSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    brand = BrandSerializer()
+    category = CategorySerializer()
+
     class Meta:
         model = Product
         fields = ["name", "description", "is_digital", "brand", "category"]
