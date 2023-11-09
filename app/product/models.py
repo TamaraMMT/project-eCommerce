@@ -22,7 +22,7 @@ class Brand(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=200)
+    description = models.TextField(max_length=200)
     is_digital = models.BooleanField(default=False)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     category = TreeForeignKey(
