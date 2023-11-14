@@ -8,7 +8,7 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     """Category list"""
 
     lookup_field = "name"
-    queryset = Category.objects.all()
+    queryset = Category.objects.filter(is_active=True)
     serializer_class = serializers.CategorySerializer
 
 
@@ -16,7 +16,7 @@ class BrandViewSet(viewsets.ReadOnlyModelViewSet):
     """Brand list"""
 
     lookup_field = "name"
-    queryset = Brand.objects.all()
+    queryset = Brand.objects.filter(is_active=True)
     serializer_class = serializers.BrandSerializer
 
 
@@ -24,7 +24,7 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     """Product list"""
 
     lookup_field = "name"
-    queryset = Product.objects.all()
+    queryset = Product.objects.filter(is_active=True)
     serializer_class = serializers.ProductSerializer
 
     filter_backends = [DjangoFilterBackend]
