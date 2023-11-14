@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django_filters import rest_framework as filters
 
 from .models import Brand, Category, Product, ProductLine
 
@@ -14,13 +15,13 @@ class CategorySerializer(serializers.ModelSerializer):
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
-        exclude = ("id",)
+        exclude = ("id", "is_active")
 
 
 class ProductLineSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductLine
-        exclude = ("id", "is_active", "product")
+        exclude = ("id", "product")
 
 
 class ProductSerializer(serializers.ModelSerializer):
