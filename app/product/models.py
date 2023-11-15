@@ -1,7 +1,5 @@
 from django.db import models
-from django.db.models.query import QuerySet
 from mptt.models import MPTTModel, TreeForeignKey
-from utils.fields import OrderField
 
 
 class Category(MPTTModel):
@@ -47,3 +45,4 @@ class ProductLine(models.Model):
         Product, on_delete=models.CASCADE, related_name="product_line"
     )
     is_active = models.BooleanField(default=False)
+    order = models.PositiveIntegerField(unique=True)
