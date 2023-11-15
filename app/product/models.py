@@ -46,3 +46,6 @@ class ProductLine(models.Model):
     )
     is_active = models.BooleanField(default=False)
     order = models.PositiveIntegerField(unique=True)
+
+    def __str__(self):
+        return str(self.sku)
