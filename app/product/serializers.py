@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django_filters import rest_framework as filters
 
-from .models import Brand, Category, Product, ProductLine
+from .models import Brand, Category, Product, ProductImage, ProductLine
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -18,10 +18,24 @@ class BrandSerializer(serializers.ModelSerializer):
         exclude = ("id", "is_active")
 
 
+class ProductImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductImage
+        exclude = ("id", "productline")
+
+
 class ProductLineSerializer(serializers.ModelSerializer):
+    product_image = ProductImageSerializer(many=True)
+
     class Meta:
         model = ProductLine
-        exclude = ("id", "product")
+        fields = [
+            "price",
+            "sku",
+            "stock_qty",
+            "order",
+            "product_image",
+        ]
 
 
 class ProductSerializer(serializers.ModelSerializer):
